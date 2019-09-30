@@ -86,13 +86,13 @@ clear norms_sq;
 clear B;
 clear C;
 
-%% task 7
+%% task 7 +
 a = input('Enter a: ');
 b = input('Enter b: ');
 res = max(max(a) - min(b), max(b) - min(a));
 disp(res);
 
-%% task 8
+%% task 8 +
 A = input('Enter matrix: ');
 [n, k] = size(A);
 squared_sum = repmat(sum(A .* A, 2), 1, n);
@@ -101,7 +101,7 @@ D = sqrt(D);
 disp(D);
 clear squared_sum;
 
-%% task 9 
+%% task 9 +
 min_dim = input('Enter min dimension: ');
 max_dim = input('Enter max dimension: ');
 step = input('Enter step: ');
@@ -133,18 +133,18 @@ clear B;
 clear C;
 clear i;
 
-%% task 10
+%% task 10 +
 A = input('Enter vector A: ');
 A = reshape(A, 1, numel(A));
 diff = A - fliplr(A);
-if isempty(find(diff > 0.0001, 1))
+if isempty(find(abs(diff) > 0.0001, 1))
     disp('A is symmetric');
 else
     disp('A is not symmetric');
 end
 clear diff;
  
-%% task 11
+%% task 11 +
 n = input('Enter n: ');
 a = input('Enter a: ');
 b = input('Enter b: ');
@@ -207,11 +207,12 @@ loglog(t, time(1, :), t, time(2, :), t, time(3, :));
 legend('trapz', 'rectangles', 'simpson');
 title('Время выполнения функции');
 
-%% task 13
+%% task 13 +
 x0 = 0;
 h = logspace(0, -5, 100000);
-der_r = (f(x0 + h) - f(x0)) ./ h;
-der_c = (f(x0 + h) - f(x0 - h)) ./ (2 * h);
+f_x0 = f(x0 + h);
+der_r = (f_x0 - f(x0)) ./ h;
+der_c = (f_x0 - f(x0 - h)) ./ (2 * h);
 dif_r = abs(der_r - f_der(x0));
 dif_c = abs(der_c - f_der(x0));
 loglog(h, dif_r, h, dif_c);
