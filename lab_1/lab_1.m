@@ -159,7 +159,7 @@ else
 end
 clear sample;
 
-%% task 12
+%% task 12 +
 a = -20;
 b = 20;
 x = a:0.4:b;
