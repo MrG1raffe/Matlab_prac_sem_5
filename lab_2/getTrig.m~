@@ -1,0 +1,22 @@
+function f = getTrig(n, meth)
+    if meth == 1
+       if n == 0
+           f = @(x) 1/sqrt(2 * pi) * ones(size(x));
+       end
+       if mod(n, 2) == 0 & n ~= 0
+           f = @(x) cos((x - pi) * n / 2) / sqrt(pi);
+       end
+       if mod(n, 2) == 1
+           f = @(x) sin((x - pi) * (n + 1) / 2) / sqrt(pi);
+       end
+    end
+    r(n, x) = @(x) sign(sin(2 ^ (n) * pi * x));
+    if meth == 2
+       f = @(x) ones(size(x)) / sqrt(2 * pi);
+       for i = 1:n
+           
+           if ()
+           f = f * r(x)
+       end
+    end
+end
