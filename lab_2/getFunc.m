@@ -32,7 +32,7 @@ function f = getFunc(k, meth, N)
            c = ((-1) ^ i) * prod(1:k) / ((prod(1:i))^2 * prod(1:k-i));
            f = @(x) f(x) + c * x .^ i;
        end
-       x = linspace(0, 1000, 100000);
+       x = linspace(0, 100, 100000);
        norm = sqrt(trapz(x, f(x) .^ 2 .* exp(-x)));
        f = @(x) f(x) / norm;
     end
