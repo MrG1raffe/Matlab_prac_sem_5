@@ -186,6 +186,8 @@ drawSet(@(x) rho(x), 100);
 %% Task 10                                                                                                                    
 drawPolar(supportLebesgue(@(x) x(1).^2 + (2*x(2)).^2 - 1, optimoptions('fmincon', 'Display', 'none', 'Algorithm', 'sqp')), 100);
 
+%%
+drawPolar(@test_rho1, 40);
 %% Трехмерная графика
 f = @(x, y, p) sin(p*x) + cos(p*y);
 h_x = 0.1;
