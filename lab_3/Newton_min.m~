@@ -1,7 +1,0 @@
-function res = Newton_min(func, grad, hess, x0)
-    prev_x = x0;
-    x = x0 + 1;
-    while norm(prev_x - x) > 0.01
-        x
-    end
-end
