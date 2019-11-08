@@ -96,7 +96,7 @@ f = @(x) 0 * x;
 convergenceFunc(fn, f, 0, 1, 512, 2);
 
 %% Task 5 +
-fourierApprox(@(x) sign(x), -1, 2, 100, 1);
+fourierApprox(@(x) exp(x), -1, 2, 100, 1);
 
 %%
 fourierApprox(@(x) x .^ 3, -1, 1, 100, 2);
