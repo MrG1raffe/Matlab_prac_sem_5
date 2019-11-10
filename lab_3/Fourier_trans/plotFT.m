@@ -27,8 +27,8 @@ function DFT = plotFT(hFigure, fHandle, fFTHandle, step, inpLimVec, outLimVec)
     N = round(T / step);
     step = T / N;
     if nargin == 5
-        c = 0;
-        d = 2 * pi / step;
+        c = -pi / step;
+        d = pi / step;
     else
         c = outLimVec(1);
         d = outLimVec(2);
