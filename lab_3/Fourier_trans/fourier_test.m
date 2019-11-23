@@ -10,9 +10,9 @@ subplot(1, 2, 1);
 axis(ax);
 subplot(1, 2, 2);
 axis(ax);
-step = 0.5;
+step = 0.01;
 a = 20;
-plotFT(f, @func1, @ftfunc1, step, [-a a]);
+plotFT(f, @func1, @ftfunc1, step, [-8 15], [-6 6]);
 
 %%
 x = -100:0.1:100;

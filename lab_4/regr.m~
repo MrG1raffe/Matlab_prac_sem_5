@@ -1,0 +1,3 @@
+function f = regr(x, y, n)
+    A = [ones(size(x)); cumprod(repmat(x, n, 1), 1)];
+end
