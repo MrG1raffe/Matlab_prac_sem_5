@@ -45,10 +45,11 @@ step = 0.05;
 plotFT(f, @func3, [], step, [0 20], [-pi/step pi/step]);
 
 %%
-x = -10:0.1:10;
-plot(x, func4(x));
+x = -4:0.01:4;
+f1 = @(x) sin(x) .* (abs(x) < 1/3);
+plot(x, f1(x));
 f = figure;
-ax = [-10 10 -0.5 2.5];
+ax = [-2 2 -0.5 2.5];
 SPlotInfo.ax = ax;
 SPlotInfo.is_graph = false;
 set(f, 'UserData', SPlotInfo);
@@ -56,8 +57,8 @@ subplot(1, 2, 1);
 axis(ax);
 subplot(1, 2, 2);
 axis(ax);
-step = 1;
-plotFT(f, @func4, [], step, [-8 8], [-10 10]);
+step = 0.001;
+plotFT(f, f1, [], step, [-1 1], [-2 2]);
 
 
 %% Без наложения

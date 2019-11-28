@@ -2,16 +2,16 @@
 clc;
 mex -R2018a biquadsolve.c;
 
-A = rand(2, 3)
-B = rand(2, 3)
+A = rand(2000, 3)
+B = rand(1, 3)
 C = rand(2, 3)
 
 [x1, x2, x3, x4] = biquadsolve(complex(A), complex(B), complex(C))
-
-check1 = A .* (x1 .^ 4) + B .* (x1 .^ 2) + C
-check2 = A .* (x2 .^ 4) + B .* (x2 .^ 2) + C 
-check3 = A .* (x3 .^ 4) + B .* (x3 .^ 2) + C 
-check4 = A .* (x4 .^ 4) + B .* (x4 .^ 2) + C
+% 
+% check1 = A .* (x1 .^ 4) + B .* (x1 .^ 2) + C
+% check2 = A .* (x2 .^ 4) + B .* (x2 .^ 2) + C 
+% check3 = A .* (x3 .^ 4) + B .* (x3 .^ 2) + C 
+% check4 = A .* (x4 .^ 4) + B .* (x4 .^ 2) + C
 
 %% Task 2
 mex qr_c.c
@@ -21,7 +21,7 @@ disp(A);
 check1 = Q1 * R1 - A
 check2 = Q1 * Q1'
 
-[Q2, R2] = qr_c(A);
+[Q2, R2] = qr_m(A);
 check1 = Q2 * R2 - A
 check2 = Q2 * Q2'
 
@@ -76,3 +76,4 @@ end
 f = regr(n, Tval, 2);
 x = linspace(100, 1000, 100);
 plot(n, Tval, x, f(x));
+max(abs(Tval - f(n)))

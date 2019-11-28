@@ -9,10 +9,10 @@ void mexFunction( int nlhs, mxArray *plhs[],
      
 { 
     if (nrhs != 3) { 
-	    mexErrMsgIdAndTxt( "MATLAB:yprime:invalidNumInputs",
+	    mexErrMsgIdAndTxt( "MATLAB:biquadsolve:invalidNumInputs",
                 "Three input arguments required."); 
     } else if (nlhs > 4 || nlhs < 2) {
-	    mexErrMsgIdAndTxt( "MATLAB:yprime:maxlhs",
+	    mexErrMsgIdAndTxt( "MATLAB:biquadsolve:maxlhs",
                 "Number of output arguments should be between 2 and 4."); 
     } 
     
@@ -40,6 +40,10 @@ void mexFunction( int nlhs, mxArray *plhs[],
         b = B[i].real + I * B[i].imag; 
         c = C[i].real + I * C[i].imag; 
         
+        if (a == 0 && b == 0) {
+            mexErrMsgIdAndTxt( "MATLAB:biquadsolve:maxlhs",
+                "This isn't biquadratic equation :(");  
+        }
         if (a == 0) {
             x[0] = csqrt(-c / b);
             x[1] = -x[0];
