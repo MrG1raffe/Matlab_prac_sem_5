@@ -1,10 +1,10 @@
 %%
 
 clc;
-sz = 500;
+sz = 300;
 mu = 2;
 z1 = 2;
-z2 = -1;
+z2 = 3;
 x = linspace(0, 1, sz);
 y = x;
 [X, Y] = meshgrid(x, y);
@@ -26,21 +26,12 @@ title('Невязка');
 
 %%
 clc;
-sz = 200;
+sz = 1000;
 x = linspace(0, 1, sz);
 y = x;
 [X, Y] = meshgrid(x, y);
 ch = @(x) cosh(x - 0.5) + cosh(0.5);
-sol = solveDirichlet(@(x, y) zeros(size(x)), @(x) ones(size(x)),@(x) zeros(size(x)) , 1, sz, sz);
-my_sol = @(x, y) cosh(x - 0.5) + cosh(y - 0.5);
+sol = solveDirichlet(@(x, y) cos(x.*y.^2).*exp(x-y), @(x) zeros(size(x)), @(y) zeros(size(y)), 10, sz, sz);
 figure;
-surf(X, Y, sol, 'Edgecolor', 'None');
+surf(X, Y, sol, 'Edgecolor', 'None')
 title('Численное решение');
-figure;
-surf(X, Y, my_sol(X, Y), 'Edgecolor', 'None');
-title('Аналитическое решение');
-figure;
-d = real(sol) - my_sol(X, Y);
-max(abs(d), [], 'all')
-surf(X, Y, d, 'Edgecolor', 'None');
-title('Невязка');
